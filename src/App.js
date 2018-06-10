@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Error from './components/Error';
 class App extends Component {
   render() {
+    // exact: use only exact path
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Home} exact/>
+          <Route path="/About" component={About} />
+          <Route path="/Contact" component={Contact} />
+          <Route component={Error} exact/>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
